@@ -4,7 +4,7 @@ def test_add_button_opens_dialog(browser):
     page = WebTablesPage(browser)
 page.open()
     page.click_add_button()
-    assert page.is_registration_form_visible(), 
+    assert page.is_registration_form_visible() 
 
 def test_empty_form_cannot_be_submitted(browser):
     page = WebTablesPage(browser)
@@ -24,14 +24,12 @@ def test_add_record(browser):
     assert "Иван Иванов" in page.get_last_row_data()
 
 def test_edit_record(browser):
-    """Проверка редактирования записи."""
     page = WebTablesPage(browser)
     page.open()
     page.click_add_button()
     page.fill_form("Иван", "Иванов", "ivan@example.com", "30", "50000", "Разработка")
     page.submit_form()
 
-    # Редактируем запись
     page.click_edit_button(0)
     page.fill_form("Петр", "Иванов", "ivan@example.com", "30", "50000", "Разработка")
     page.submit_form()
